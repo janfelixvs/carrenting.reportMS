@@ -1,4 +1,4 @@
-package com.carrenting.report.ports.data;
+package com.carrenting.report.dto;
 
 import jakarta.persistence.*;
 import lombok.Getter;
