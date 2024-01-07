@@ -4,17 +4,16 @@ import com.carrenting.report.dto.Reservation;
 import com.carrenting.report.feign.ReservationClient;
 import com.carrenting.report.ports.in.ReportManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class ReportService implements ReportManager {
 
     private final ReservationClient reservationClient;
 
-    ReportService(){
-
-    }
 
     @Autowired
     ReportService(ReservationClient reservationClient){
@@ -40,7 +39,7 @@ public class ReportService implements ReportManager {
     }
 
     public List<Reservation> getAllReservations() {
-        return null;
+        return reservationClient.getAllReservations();
     }
 
 }
