@@ -1,5 +1,5 @@
 package com.carrenting.report.dto;
-
+/*
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,3 +26,5 @@ public class Car {
         this.mileage = mileage;
     }
 }
+
+ */
