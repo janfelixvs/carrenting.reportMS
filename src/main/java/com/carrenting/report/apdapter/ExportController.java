@@ -1,8 +1,11 @@
 package com.carrenting.report.apdapter;
 
-import com.carrenting.report.dto.Reservation;
+import com.carrenting.report.dto.CarDto;
+import com.carrenting.report.dto.CustomerDto;
+import com.carrenting.report.dto.MaintenanceDto;
+import com.carrenting.report.dto.ReservationDto;
 import com.carrenting.report.service.ReportService;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,12 +17,38 @@ import java.util.List;
 @RequestMapping("/api/export")
 public class ExportController {
 
-    @Autowired
     private ReportService reportService;
 
     @GetMapping(value = "/csv", produces = MediaType.TEXT_PLAIN_VALUE)
-    public String exportReservationsAsCsv() {
-        List<Reservation> reservations = reportService.getAllReservations();
-        return reportService.createReservationCsvReport(reservations);
+    public String exportAsCsv(String requestType) {
+
+        switch (requestType){
+
+            case "Reservation":
+                List<ReservationDto> reservationDtos = reportService.getAllReservations();
+                return reportService.createCsvReservationReport(reservationDtos);
+
+            case "Maintenance":
+                List<MaintenanceDto> maintenanceDtos = reportService.getAllMaintenances();
+                return reportService.createCsvMaintenanceReport(maintenanceDtos);
+
+            case "Customer":
+                List<CustomerDto> customerDtos = reportService.getAllCustomers();
+                return reportService.createCsvCustomerReport(customerDtos);
+
+            case "Car":
+                List<CarDto> carDtos = reportService.getAllCars();
+                return  reportService.createCsvCarReport(carDtos);
+
+            default:
+                System.out.println("Unbekannte Art");
+                return "";
+
+        }
+
+
+
+
+
     }
 }
