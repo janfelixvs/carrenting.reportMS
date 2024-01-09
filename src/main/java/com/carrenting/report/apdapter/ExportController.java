@@ -19,6 +19,10 @@ public class ExportController {
 
     private ReportService reportService;
 
+
+    //http://localhost:8086/api/export/csv?requestType=Reservation
+
+
     @GetMapping(value = "/csv", produces = MediaType.TEXT_PLAIN_VALUE)
     public String exportAsCsv(String requestType) {
 
