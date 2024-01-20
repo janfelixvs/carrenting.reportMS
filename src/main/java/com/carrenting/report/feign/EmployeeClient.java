@@ -9,7 +9,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 
 import java.util.List;
 
-@FeignClient(name = "employeeClient", url = "http://localhost:8081")
+@FeignClient(name = "employeeClient", url = "http://employee:8081")
 public interface EmployeeClient {
 
 
